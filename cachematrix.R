@@ -7,8 +7,8 @@
 
 makeCacheMatrix <- function(x = matrix()) {
     m <- NULL
-    set <- function(y) {
-        x <<- y
+    set <- function(z) {
+        x <<- z
         m <<- NULL
     }
     get <- function() x
@@ -29,7 +29,7 @@ cacheSolve <- function(x, ...) {
         return(m)
     }
     data <- x$get()
-    m <- solve(data, ...)
+    m <- solve(data) %*% data
     x$setinverse(m)
     m
 }
